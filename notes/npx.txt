@@ -3,11 +3,11 @@ npm install -g npx
 
 假设项目依赖了mocha这个包
 一般来说，调用 Mocha ，只能在项目脚本和 package.json 的scripts字段里面， 如果想在命令行下调用，必须像下面这样。
- 项目的根目录下执行：
+项目的根目录下执行：
 node-modules/.bin/mocha --version
 
 npx 就是想解决这个问题，让项目内部安装的模块用起来更方便，只要像下面这样调用就行了。
- npx mocha --version
+npx mocha --version
 
 
- 参考：http://www.ruanyifeng.com/blog/2019/02/npx.html
+参考：http://www.ruanyifeng.com/blog/2019/02/npx.html
