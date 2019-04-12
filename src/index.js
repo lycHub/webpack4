@@ -1,10 +1,15 @@
-import pic from './assets/5c334c56f2328.gif';
+import pic from './assets/sao.gif';
+import indexStyle from './styles/index.scss';
+import createPic from './js/createPic';
 
 window.addEventListener('DOMContentLoaded', function () {
+  createPic(pic);
   const root = document.getElementById('root');
  /* const img = new Image();
   img.src = pic;*/
  const img = document.createElement('img');
  img.setAttribute('src', pic);
-  root.appendChild(img);
+//  img.classList.add('pic');
+ img.classList.add(indexStyle.pic);
+ root.appendChild(img);
 });
