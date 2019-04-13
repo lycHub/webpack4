@@ -1,3 +1,4 @@
+// import "@babel/polyfill";
 import pic from './assets/sao.gif';
 import indexStyle from './styles/index.scss';
 import createPic from './js/createPic';
@@ -12,4 +13,5 @@ window.addEventListener('DOMContentLoaded', function () {
 //  img.classList.add('pic');
  img.classList.add(indexStyle.pic);
  root.appendChild(img);
+ consele.log('aaa');
 });

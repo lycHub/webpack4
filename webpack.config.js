@@ -1,4 +1,6 @@
 const {resolve} = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
   mode: 'development',
@@ -9,13 +11,15 @@ module.exports = {
   * */
   entry: './src/index.js',
   output: {
-    filename: 'js/[id].js',  // [name] === [id] === 'main'
-    
-    // 输出目录，必须是绝对路径
-    path: resolve(__dirname, 'bundles')
+    filename: 'bundle.js',  // [name] === [id] === 'main'
   },
+  devServer: {},
   module: {
     rules: [{
+      test: /\.js$/,
+      exclude: /node_modules/,
+      loader: 'babel-loader'
+    }, {
       test: /\.(gif|jpg|jpeg|png|svg)$/,
       use: [{
         loader: "url-loader",
@@ -41,5 +45,20 @@ module.exports = {
         }
       }, 'postcss-loader', 'sass-loader']
     }]
+  },
+  plugins: [
+    new CleanWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      title: 'Hi Webpack',
+      template: './index.html',
+      meta: {
+        'viewport': 'width=device-width, initial-scale=1, shrink-to-fit=no user-scalable=no',
+        'apple-touch-fullscreen': 'yes',
+      }
+    })
+  ],
+  optimization: {
+    // 摇树优化，即标记未被使用并无副作用的export模块，mode: production时默认为true
+    usedExports: true
   }
 }
