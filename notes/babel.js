@@ -24,7 +24,7 @@ const presets = [
      * @babel/polyfill会将所有高阶语法转化，这个选项作为优化手段，只转化项目中用到的语法
      *797k => 291k
      * 当useBuiltIns: "usage"时，入口文件就不需要import "@babel/polyfill"了
-     * 当useBuiltIns: "entry"时，需要在入口文件里import "@babel/polyfill"一次
+     * 当useBuiltIns: "entry"时，需要在入口文件里import "@babel/polyfill"
      * */
     useBuiltIns: "usage"
   }

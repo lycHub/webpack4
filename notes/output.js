@@ -1,5 +1,7 @@
 output = {
-  filename: 'js/[id].[chunkhash:10].js',  // [name] === [id] === 'main'
+  // contenthash为内容变化就改变
+  filename: 'js/[id].[contenthash:10].js',  // [name] === [id] === 'main'
+  chunkFilename: 'js/[id].[contenthash:10].js',   // 非入口文件名，比如lodash
     
     // 输出目录，必须是绝对路径
     path: resolve(__dirname, 'bundles'),

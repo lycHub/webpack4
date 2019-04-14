@@ -2,9 +2,14 @@
   "name": "webpack4",
   "version": "1.0.0",
   "description": "webpack4",
-  "sideEffects": false,
+  "sideEffects": [
+    "@babel/polly-fill",
+    "*.scss"
+  ],
   "scripts": {
-    "start": "webpack-dev-server --color"
+    "start": "webpack-dev-server --color --config build/webpack.dev.js",
+    "dev": "webpack --profile --json > stats.json --config build/webpack.dev.js",
+    "build": "webpack --config build/webpack.prod.js"
   },
   "repository": {
     "type": "git",
@@ -28,17 +33,22 @@
     "css-loader": "^2.1.1",
     "file-loader": "^3.0.1",
     "html-webpack-plugin": "^3.2.0",
+    "mini-css-extract-plugin": "^0.6.0",
     "node-sass": "^4.11.0",
+    "optimize-css-assets-webpack-plugin": "^5.0.1",
     "postcss-loader": "^3.0.0",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
     "url-loader": "^1.1.2",
     "webpack": "^4.29.6",
     "webpack-cli": "^3.3.0",
-    "webpack-dev-server": "^3.3.1"
+    "webpack-dev-server": "^3.3.1",
+    "webpack-merge": "^4.2.1"
   },
   "dependencies": {
     "@babel/polyfill": "^7.4.3",
-    "core-js": "^2.6.5"
+    "core-js": "^2.6.5",
+    "date-fns": "^1.30.1",
+    "lodash": "^4.17.11"
   }
 }

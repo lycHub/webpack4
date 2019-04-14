@@ -5,7 +5,7 @@
 * "sideEffects": false,
 *
 *
-* 如果你的代码确实有一些副作用，那么可以改为提供一个数组：
+* 如果你的代码确实有一些副作用，那么可以改为提供一个黑名单数组：
 * "sideEffects": [
 * "@babel/polly-fill",
 * "*.scss",
@@ -14,6 +14,10 @@
 * */
 
 optimization = {
-  // 摇树优化，即标记未被使用并无副作用的export模块，mode: production时默认为true
+  /*
+  * 摇树优化，即标记未被使用并无副作用的export模块，mode: production时默认为true
+  * 在做css代码分隔时，和mini-css-extract-plugin有冲突，
+  * 所以sideEffects里一般会设置忽略*.scss
+  * */
   usedExports: true
 };
