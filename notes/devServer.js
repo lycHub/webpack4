@@ -19,5 +19,49 @@ devServer = {
    * hotOnly: true(可选)
    * */
   
-  historyApiFallback: true // 参考：https://blog.csdn.net/astonishqft/article/details/82762354
+  
+  /*
+  * 如果是一对多的关系，可用数组
+  * proxy: [{
+     context: ["/auth", "/api"],
+     target: "https://api-m.mtime.cn",
+   }]
+  * */
+  proxy: {
+    '/PageSubArea': {
+      target: 'https://api-m.mtime.cn',
+      changeOrigin: true,
+      /*
+       * 路径替换，请求的是LocationMovies.api，实际是LocationMovies.api
+       * https://api-m.mtime.cn/Showtime/LocationMovies.api
+       * 替换成
+       * https://api-m.mtime.cn/Showtime/LocationMovies.api
+       * */
+      pathRewrite: {
+        'LocationMovies.api': 'HotCitiesByCinema.api'
+      },
+  
+      // 拦截器
+      /* bypass: function(req, res, proxyOptions) {
+       if (req.headers.accept.indexOf("html") !== -1) {
+       console.log("Skipping proxy for browser request.");
+       return "/index.html";
+       }
+       }*/
+    }
+  },
+  
+  /*
+  * 当使用 HTML5 History API 时，任意的 404 响应都可能需要被替代为 index.html
+  * historyApiFallback: true
+  * */
+  historyApiFallback: {
+    rewrites: [
+      // 根路径/ => /views/landing.html
+      // /subpage => /views/subpage.html
+      { from: /^\/$/, to: '/views/landing.html' },
+      { from: /^\/subpage/, to: '/views/subpage.html' },
+      { from: /./, to: '/views/404.html' }
+    ]
+  }
 }

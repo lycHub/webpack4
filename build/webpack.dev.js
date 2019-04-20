@@ -6,7 +6,18 @@ module.exports = merge(baseConfig, {
   output: {
     filename: '[name].js',  // [name] === [id] === 'main'
   },
-  devServer: {},
+  devServer: {
+    host: '192.168.100.11',
+    
+    // 任何404请求都替换为index.html,比如：http://192.168.100.11:8080/aa
+    historyApiFallback: true,
+    proxy: {
+      '/Showtime': {
+        target: 'https://api-m.mtime.cn',
+        changeOrigin: true
+      }
+    }
+  },
   devtool: 'cheap-module-eval-source-map',
   module: {
     rules: [{
