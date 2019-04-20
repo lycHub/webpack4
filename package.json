@@ -1,7 +1,8 @@
 {
-  "name": "webpack4",
+  "name": "webpack4-library",
   "version": "1.0.0",
   "description": "webpack4",
+  "main": "./dist/library.js",
   "sideEffects": [
     "@babel/polly-fill",
     "*.scss"

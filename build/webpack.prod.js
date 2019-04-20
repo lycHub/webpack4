@@ -7,7 +7,13 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 module.exports = merge(baseConfig, {
   mode: 'production',
   output: {
-    filename: '[name].[contenthash:10].js',  // [name] === [id] === 'main'
+    filename: 'library.js',  // [name] === [id] === 'main'
+
+    // 创建全局变量myLibrary, 并将入口文件暴露出的对象赋给它
+    library: 'myLibrary',
+
+    // 指定打包后的内容如何暴露，umd表示通用所有模块定义系统
+    libraryTarget: 'umd'
   },
   // devtool: 'cheap-module-source-map',
   module: {

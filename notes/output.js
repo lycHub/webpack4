@@ -12,5 +12,18 @@ output = {
      * 配置publicPath后：
      * <script type="text/javascript" src="//bootstrap.cdn.com/js/main.7de1343fc7.js"></script>
      * */
-    publicPath: '//bootstrap.cdn.com'
+    publicPath: '//bootstrap.cdn.com',
+
+
+    // 创建全局变量myLibrary, 并将入口文件暴露出的对象赋给它
+    library: 'myLibrary',
+
+    /*
+      指定打包后的内容如何暴露
+      通过对象属性暴露：
+        this:  将库的返回值分配给this对象的由output.library指定的属性。其中this的意义由用户决定
+      umd: 通用所有模块定义系统
+      参考：https://blog.csdn.net/frank_yll/article/details/78992778
+    */
+    libraryTarget: 'umd'
 }
