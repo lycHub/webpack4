@@ -36,9 +36,5 @@ module.exports = {
      splitChunks: {
        chunks: 'all'
      }
-   },
-  
-  performance: {
-    hints: false  // 不展示警告或错误提示。
-  }
+   }
 }
