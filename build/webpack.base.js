@@ -1,8 +1,12 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { resolve } = require('path');
 
-module.exports = {
-  entry: resolve(__dirname, '../src/index.js'),
+const config = {
+  entry: {
+    main: resolve(__dirname, '../src/pages/main/main.js'),
+    list: resolve(__dirname, '../src/pages/list/list.js'),
+    detail: resolve(__dirname, '../src/pages/detail/detail.js')
+  },
   module: {
     rules: [{
       test: /\.js$/,
@@ -20,17 +24,7 @@ module.exports = {
       }]
     }]
   },
-  plugins: [
-    new HtmlWebpackPlugin({
-      title: 'Hi Webpack',
-      // template: '../index.html',
-      template: resolve(__dirname, '../index.html'),
-      meta: {
-        'viewport': 'width=device-width, initial-scale=1, shrink-to-fit=no user-scalable=no',
-        'apple-touch-fullscreen': 'yes'
-      }
-    })
-  ],
+  plugins: [],
   
    optimization: {
      splitChunks: {
@@ -41,4 +35,23 @@ module.exports = {
   performance: {
     hints: false  // 不展示警告或错误提示。
   }
+};
+
+config.plugins = config.plugins.concat(makeHtmlPlugins(config.entry));
+
+
+module.exports = config;
+
+
+function makeHtmlPlugins(entry) {
+  const plugins = [];
+  Object.keys(entry).forEach(item => {
+    plugins.push(new HtmlWebpackPlugin({
+      title: item,
+      template: resolve(__dirname, `../src/pages/${item}/${item}.html`),
+      filename: item + '.html',
+      chunks: [item]
+    }))
+  });
+  return plugins;
 }
