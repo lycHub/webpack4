@@ -2,14 +2,8 @@
   "name": "webpack4",
   "version": "1.0.0",
   "description": "webpack4",
-  "sideEffects": [
-    "@babel/polly-fill",
-    "*.scss"
-  ],
   "scripts": {
-    "start": "webpack-dev-server --color --config build/webpack.dev.js",
-    "dev": "webpack --profile --json > stats.json --config build/webpack.dev.js",
-    "build": "webpack --config build/webpack.prod.js"
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
@@ -33,6 +27,7 @@
     "css-loader": "^2.1.1",
     "file-loader": "^3.0.1",
     "html-webpack-plugin": "^3.2.0",
+    "loader-utils": "^1.2.3",
     "mini-css-extract-plugin": "^0.6.0",
     "node-sass": "^4.11.0",
     "optimize-css-assets-webpack-plugin": "^5.0.1",
