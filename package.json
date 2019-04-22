@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "webpack4",
   "scripts": {
+    "debug": "node --inspect --inspect-brk node_modules/webpack/bin/webpack.js",
     "build": "webpack"
   },
   "repository": {
